@@ -60,7 +60,8 @@ class NumericAttributeClassObserverGaussianHellinger(AttributeObserver):
             merit = -np.inf
             info_gain = 0
             # print("numeric_attribute_class_observer_gaussian_hellinger: for")
-            if self._att_val_dist_per_class[0] is not None and self._att_val_dist_per_class[1] is not None:
+
+            if self._att_val_dist_per_class.get(0,None) is not None and self._att_val_dist_per_class.get(1,None) is not None:
                 # print("numeric_attribute_class_observer_gaussian_hellinger: if01")
                 n_mean = self._att_val_dist_per_class[0].get_mean()
                 n_variance = self._att_val_dist_per_class[0].get_variance()
