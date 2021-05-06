@@ -124,3 +124,45 @@ def test_extremely_fast_decision_tree_coverage():
     X, y = stream.next_sample(5000)
     learner = ExtremelyFastDecisionTreeClassifier(leaf_prediction='nba', nominal_attributes=[i for i in range(1, 9)])
     learner.partial_fit(X, y, classes=stream.target_values)
+
+#
+# def test_extremely_fast_decision_tree_gaussian_hellinger(test_path):
+#     stream = RandomTreeGenerator(
+#         tree_random_state=23, sample_random_state=12, n_classes=2,
+#         n_cat_features=0, n_categories_per_cat_feature=0, n_num_features=10,
+#         max_tree_depth=30, min_leaf_depth=10, fraction_leaves_per_level=0.45
+#     )
+#
+#     learner = ExtremelyFastDecisionTreeClassifier(
+#         split_criterion='gaussian_hellinger'
+#     )
+#
+#     cnt = 0
+#     max_samples = 5000
+#     predictions = array('i')
+#     proba_predictions = []
+#     wait_samples = 100
+#
+#     while cnt < max_samples:
+#         X, y = stream.next_sample()
+#         # Test every n samples
+#         if (cnt % wait_samples == 0) and (cnt != 0):
+#             predictions.append(learner.predict(X)[0])
+#             proba_predictions.append(learner.predict_proba(X)[0])
+#         learner.partial_fit(X, y)
+#         cnt += 1
+#
+#     expected_predictions = array('i', [1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1,
+#                                        1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0,
+#                                        1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1,
+#                                        0, 0, 1, 0, 0, 1, 0, 0, 0, 0])
+#
+#     assert np.alltrue(predictions == expected_predictions)
+#
+#     expected_info = "ExtremelyFastDecisionTreeClassifier(binary_split=False, grace_period=200, " \
+#                     "leaf_prediction='nba', max_byte_size=33554432, memory_estimate_period=1000000, " \
+#                     "min_samples_reevaluate=20, nb_threshold=0, nominal_attributes=None, " \
+#                     "split_confidence=1e-07, split_criterion='gaussian_hellinger', stop_mem_management=False, tie_threshold=0.05)"
+#     info = " ".join([line.strip() for line in learner.get_info().split()])
+#     assert info == expected_info
+#
