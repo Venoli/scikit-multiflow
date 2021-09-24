@@ -54,18 +54,15 @@ class GaussianHellingerDistanceCriterion(SplitCriterion):
                      - np.sqrt(left_branch_positive/total_positive)) ** 2 + \
                     (np.sqrt(right_branch_negative/total_negative)
                      - np.sqrt(right_branch_positive/total_positive)) ** 2
-        # print("gaussian_hellinger_distance_criterion: compute_hellinger old")
 
         return np.sqrt(hellinger)
 
-    # added by Venoli
     @staticmethod
     def compute_hellinger(p_mean, p_variance, q_mean, q_variance):
         hellinger = 0.0
         p_stdev = np.sqrt(p_variance)
         q_stdev = np.sqrt(q_variance)
         hellinger = 1.0 - np.sqrt((2.0 * p_stdev * q_stdev)/(p_variance + q_variance)) * np.exp((-1.0/4.0) * (np.power(p_mean - q_mean, 2)/(p_variance + q_variance)))
-        # print("gaussian_hellinger_distance_criterion: compute_hellinger venoli")
 
         return np.sqrt(hellinger)
 
