@@ -56,6 +56,8 @@ class ExtremelyFastDecisionTreeClassifier(HoeffdingTreeClassifier):
         | Split criterion to use.
         | 'gini' - Gini
         | 'info_gain' - Information Gain
+        | ‘hellinger’ - Helinger Distance
+        | ‘gaussian_hellinger’ - Gaussian Helinger Distance
     split_confidence: float (default=0.0000001)
         Allowed error in split decision, a value closer to 0 takes longer to decide.
     tie_threshold: float (default=0.05)
